@@ -1,0 +1,10 @@
+/target
+/.hg
+/.idea
+/out
+build.*
+*.iml
+.hgignore
+.gitignore
+/project
+/.bsp
