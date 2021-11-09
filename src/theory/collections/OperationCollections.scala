@@ -2,7 +2,6 @@ package theory.collections
 
 object OperationCollections extends App {
 
-
   ////////////////// Array //////////////////////////////////////////////
   val stringArray: Array[String] = Array("h", "e", "l", "l", "o", ".")
   // stringArray.update(5, "!")
@@ -18,7 +17,6 @@ object OperationCollections extends App {
   // преобразование типа
   val seqNumber: Seq[String] = stringArray
   println(seqNumber) // ArraySeq(h, e, l, l, o, !)
-
 
   ////////////////// Range //////////////////////////////////////////////
   val range: Seq[Int] = 1 until 5
