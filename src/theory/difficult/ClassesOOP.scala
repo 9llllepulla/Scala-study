@@ -2,33 +2,32 @@ package theory.difficult
 
 object ClassesOOP extends App {
 
-  /*
   // 1 создание объекта
   val studentFullArgs = new StudentOOP(1, "Alla")
   // 2 создание объекта
   val studentOneArg = new StudentOOP("Sergei")
   // 3 создание объекта
   val studentWithoutArgs = new StudentOOP()
-  */
+
   val instructor = new Instructor(1,"seRgey", "LYASHKO")
   println(instructor.fullName())
 
   val course = new CourseOOP(3, "title", "2020", instructor)
   println(course.getID)
-  //println("old: "+course.releaseYear)
-  //val newCourse = course.copyCourse("2021")
-  //println("new: "+newCourse.releaseYear)
+  println("old: "+course.releaseYear)
+  val newCourse = course.copyCourse("2021")
+  println("new: "+newCourse.releaseYear)
 
-  //println("test instructor: "+course.isTaughtBy(instructor))
+  println("test instructor: "+course.isTaughtBy(instructor))
 
-  //val nextCourse = new Course(1, "new", "2022", instructor)
-  //println("test next instructor: "+nextCourse.isTaughtBy(instructor))
+  val nextCourse = new CourseOOP(1, "new", "2022", instructor)
+  println("test next instructor: "+nextCourse.isTaughtBy(instructor))
 
 
 }
-class CourseOOP(courseId: Int, title: String, releaseYear: String, instructor: Instructor){
+class CourseOOP(courseId: Int, title: String, val releaseYear: String, instructor: Instructor){
 
-  //def this(releaseYear: String) = this(0, title = "No title", releaseYear, instructor = null)
+  def this(releaseYear: String) = this(0, title = "No title", releaseYear, instructor = null)
 
   def getID: String = courseId.toString++instructor.id.toString
 

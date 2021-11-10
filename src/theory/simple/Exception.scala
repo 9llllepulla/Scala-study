@@ -11,7 +11,7 @@ object Exception extends App {
   val potentialFailure = Try(unsafeMethod())
   println(potentialFailure) // Failure(java.lang.RuntimeException: Sorry, not your day)
 
-  // альтернативный способо
+  // альтернативный способ
   val anotherPotentialFailure = Try {
     // код, содержащий исключения
   }
