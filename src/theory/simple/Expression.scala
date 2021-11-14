@@ -1,6 +1,7 @@
 package theory.simple
 
 import java.io.File
+import scala.io.StdIn.readInt
 
 /**
  * Выражения
@@ -38,11 +39,19 @@ object Expression extends App {
     if file.getName.endsWith(".scala")
   ) println(file)
 
+  // использование в качестве рекурсивного вывода
+  (1 to 3).foreach(_ => print("something")) // somethingsomethingsomething
 
 
 
-
-
-
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  var res = 1
+  for(_ <- 1 to 3) {
+    val x = readInt()
+    res *= x
+  }
+  println(res)
+  print((1 to 3).map(_ => readInt()).product) // вариант решения вместо цикла
+  ///////////////////////////////////////////////////////////////////////////////////////////
 
 }

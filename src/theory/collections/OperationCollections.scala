@@ -18,13 +18,9 @@ object OperationCollections extends App {
   val seqNumber: Seq[String] = stringArray
   println(seqNumber) // ArraySeq(h, e, l, l, o, !)
 
-  ////////////////// Range //////////////////////////////////////////////
+  // использование Range
   val range: Seq[Int] = 1 until 5
   range.foreach(print) // 1234
-  println
-
-  // использование в качестве рекурсивного вывода
-  (1 to 3).foreach(_ => print("something")) // somethingsomethingsomething
   println
 
   // создание коллекции
@@ -68,8 +64,9 @@ object OperationCollections extends App {
     str <- list2
   } yield str + number
   println(forCombineFilter) // // List(a2, b2)
+  // поиск первого вхождения элемента
+  println(Seq(3, 2, 1, 3, 3).search(3)) // Found(0)
 
-  println(Seq(3, 2, 1, 3, 3).search(3))
 
   // примеры комбинирования
   val list = List(1, 2, 3)

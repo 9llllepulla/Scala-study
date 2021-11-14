@@ -32,7 +32,7 @@ object StringOperations extends App {
 
   // Интерполяция строк
   val name = "Alla"
-  println(s"Hello, $name")
+  println(s"Hello, $name!") // Hello, Alla!
   val surName = "Liashko"
   println(s"Hello, ${name+" "+surName}")
 
