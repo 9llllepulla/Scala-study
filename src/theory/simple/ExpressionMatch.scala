@@ -1,8 +1,17 @@
-package theory.constructions
+package theory.simple
 
-object Patterns extends App {
+object ExpressionMatch extends App {
 
-  // аналог switch-case
+  // выражение сопоставления аналог switch-case
+  val firstArg = if(args.length > 0) args(0) else ""
+
+  firstArg match {
+    case "salt" => println("pepper")
+    case "chips" => println("salsa")
+    case "eggs" => println("bacon")
+    case _ => println("huh ?")
+  }
+
   val someVal = 3
 
   val description = someVal match {
@@ -13,7 +22,7 @@ object Patterns extends App {
   }
   println(description) // action three
 
-  /* Виды шаблонов */
+  /** Виды шаблонов */
 
   // константы
   val x: Any = "Scala"
@@ -75,8 +84,8 @@ object Patterns extends App {
   // Задается имя совпадения, ставится знак @, после которого прописывается сам шаблон:
 
   val nameBindingMatch = List(6, 2) match {
-    case nonEmptyList@List(1, _, _, _) => s"нашли $nonEmptyList"
-    case someList@List(6, _*) => s"нашли список $someList"
+    case nonEmptyList @List(1, _, _, _) => s"нашли $nonEmptyList"
+    case someList @List(6, _*) => s"нашли список $someList"
   }
   println(nameBindingMatch) // нашли список List(6, 2)
 
