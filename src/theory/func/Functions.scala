@@ -2,6 +2,9 @@ package theory.func
 
 import scala.annotation.tailrec
 
+/**
+ * Функции
+ */
 object Functions extends App {
 
   private def getPerson(name: String, surName: String): String = {
