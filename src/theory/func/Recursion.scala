@@ -4,6 +4,10 @@ import scala.annotation.tailrec
 
 object Recursion extends App {
 
+  /**
+   * Хвостовая рекурсия
+   */
+
   // Факториал с помощью ХВОСТОВОЙ рекурсии
   def factorialTailRecursion(n: Int): Int = {
     @tailrec
@@ -14,7 +18,6 @@ object Recursion extends App {
 
     loop(n)
   }
-
   println(factorialTailRecursion(4))
 
   // вывод слова n-Раз с помощью рекурсии
@@ -27,7 +30,7 @@ object Recursion extends App {
 
     loop(n)
   }
-  //println(repeatWord("пук", 5))
+  println(repeatWord("пук", 5))
 
   // вычисление степеней 2
   def powerOfTwo(pow: Int): BigInt = {
@@ -40,33 +43,7 @@ object Recursion extends App {
 
     loop(pow)
   }
-  //println(powerOfTwo(3))
-
-  /**
-   * Требуется написать программу, которая:
-   * увеличивает заданное число x на число y n-ое количество раз
-   * выводит на экран полученное на шаге 1 число столько раз, сколько в нем цифр, и фразу is the result
-   */
-  def increase(x: Int, y: Int, n: Int): Int = {
-    @tailrec
-    def loop(count: Int, acc: Int = x): Int = {
-      if (count == 0) acc
-      else loop(count - 1, acc + y)
-    }
-
-    loop(n)
-  }
-
-  def createIncreaseResultString(num: Int): String = {
-    @tailrec
-    def loop(count: Int, acc: String = s"$num"): String = {
-      if (count == 1) acc
-      else loop(count - 1, s"$num $acc")
-    }
-
-    loop(num.toString.length)
-  }
-  //println(createIncreaseResultString(increase(fArgs(0), fArgs(1), fArgs(2)))++" is the result")
+  println(powerOfTwo(3))
 
   def powerOfTwo1(power: Int): BigInt = {
     @tailrec
@@ -78,7 +55,6 @@ object Recursion extends App {
 
     loop(power)
   }
-
   println("test: " + powerOfTwo1(0))
 
 }

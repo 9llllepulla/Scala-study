@@ -106,7 +106,7 @@ object Functions extends App {
   /**
    * Через каррирование
    * Выглядеть это теперь будет так:
-   * def имяФункции(аргумент1, агрумент2) = (аргумент3) => операция
+   * def имяФункции(аргумент1, аргумент2) = (аргумент3) => операция
    */
   def curruingNTimes(function: Int => Int, n: Int): Int => Int = {
     if (n <= 0) (x: Int) => x
@@ -133,7 +133,9 @@ object Functions extends App {
   val res = someFunc(1)
   println(res(4))
 
-  // Частичные функции
+  /**
+   * Частичные функции
+   */
   val aPartialFunction: PartialFunction[String, String] = {
     case "mon" => "Work!"
     case "fri" => "Party Time"
