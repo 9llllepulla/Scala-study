@@ -65,7 +65,6 @@ object Functions extends App {
   // Функции высшего порядка ////////////////
 
   //////////// Способ 1
-
   // функция 1
   @tailrec
   def nTimes(function: Int => Int, x: Int, n: Int): Int = {
@@ -77,29 +76,6 @@ object Functions extends App {
   val increment: Int => Int = (x: Int) => x + 1
   // вызов функции
   println(nTimes(increment, 0, 3)) // 3
-
-  // Каррирование
-
-  /**
-   * Опять же, обращаясь к алгебрe, расписать весь процесс можно примерно так:
-   * f1 = f(x)
-   * f2 = f1(y)
-   * result = f2(z)
-   * Иначе говоря:
-   * result = f(x)(y)(z)
-   */
-  def add(x: Int, y: Int): Int = x + y
-
-  println(add(1, 2)) // 3
-
-  // или
-  def add1(x: Int) = (y: Int) => x + y
-
-  //println(add1(1)(2)) // 3
-  // или
-  def add2(x: Int)(y: Int) = x + y
-
-  println(add2(1)(2))
 
   //////////// Способ 2
 
@@ -114,6 +90,8 @@ object Functions extends App {
   }
   // вызов
   println(curruingNTimes(increment, 3)(0))
+
+  ///////////////////////////////////////////////////////////////////////////////
 
   def sum: Int => Int => Int = (x: Int) => (y: Int) => x + y
 
