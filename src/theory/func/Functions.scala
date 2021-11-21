@@ -10,38 +10,17 @@ object Functions extends App {
   private def getPerson(name: String, surName: String): String = {
     s"$name $surName"
   }
-
   println(getPerson("Alla", "Lyashko"))
 
   private def printPerson(name: String, surName: String): Unit = {
     println(s"$name $surName")
   }
-
   printPerson("Sergei", "Lyashko")
 
   def createFuncWithDefaultParameters(x: Int, y: String = "Default y"): String = {
     s"x = $x and y = $y"
   }
-
   println(createFuncWithDefaultParameters(42))
-
-  ////////////////////////////////////////////////////////
-  // Вызов по значению
-  //  вычисление значения переданного выражения ПЕРЕД вызовом функции.
-  def callByValue(x: Long): Unit = {
-    println(s"call by x1 value = $x")
-    println(s"call by x2 value = $x") // x1 == x2
-  }
-
-  // Вызов по имени
-  // вычисление значения выражения В МОМЕНТ его вызова в функции
-  def callByName(x: => Long): Unit = {
-    println(s"call by x1 value = $x")
-    println(s"call by x2 value = $x") // x1 != x2
-  }
-
-  callByValue(System.nanoTime())
-  callByName(System.nanoTime())
 
   // Вложенные функции
   def callBossFunction(): String = {
@@ -49,7 +28,6 @@ object Functions extends App {
     // somecode
     callHelpFunction()
   }
-
   println(callBossFunction())
 
   // примеры способов вызова функции
@@ -78,7 +56,6 @@ object Functions extends App {
   println(nTimes(increment, 0, 3)) // 3
 
   //////////// Способ 2
-
   /**
    * Через каррирование
    * Выглядеть это теперь будет так:
@@ -90,8 +67,6 @@ object Functions extends App {
   }
   // вызов
   println(curruingNTimes(increment, 3)(0))
-
-  ///////////////////////////////////////////////////////////////////////////////
 
   def sum: Int => Int => Int = (x: Int) => (y: Int) => x + y
 
