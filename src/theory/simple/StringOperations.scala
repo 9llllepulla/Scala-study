@@ -1,5 +1,7 @@
 package theory.simple
 
+import theory.simple.StringOperations.reg
+
 object StringOperations extends App {
 
   private val str = "Scala course"
@@ -35,5 +37,32 @@ object StringOperations extends App {
   println(s"Hello, $name!") // Hello, Alla!
   val surName = "Liashko"
   println(s"Hello, ${name+" "+surName}")
+
+  // Переносы строк
+  val lineBreak =
+    """
+    переносы
+    строк
+    не
+    потеряны
+  """
+  println(lineBreak)
+
+  val lineBreakWithMargin =
+    """|переносы
+       |строк
+       |не
+       |потеряны
+  """.stripMargin
+  println(lineBreakWithMargin)
+
+  val reg = "aaabbb"
+  println(reg.startsWith("aa")) // true
+  println(reg.endsWith("bb")) // true
+  println(reg.contains("ab")) // true
+
+  // регулярные выражения
+  val regex = "a+b+".r
+
 
 }

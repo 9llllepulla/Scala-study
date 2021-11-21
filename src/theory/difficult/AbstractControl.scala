@@ -81,8 +81,4 @@ object AbstractControl extends App {
   withPrintWriter2(file) {
     writer => writer.println(new Date())
   }
-
-
-
-
 }
