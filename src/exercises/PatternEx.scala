@@ -37,7 +37,6 @@ object PatternsEx extends App {
 
   // ([a-zA-Z]+)[\s]{1}([a-zA-Z]+)
 
-
   val inputName = readLine()
   Person.signatureReduction(inputName)
 }
