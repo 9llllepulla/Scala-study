@@ -4,9 +4,7 @@ import scala.collection.mutable.ArrayBuffer
 
 /** Очередь целых чисел */
 abstract class IntQueue {
-
   def get(): Int
-
   def put(x: Int): Unit
 }
 
@@ -61,12 +59,13 @@ object StackableModifications extends App {
   dQu.put(15)
   println(dQu.get()) // 30
 
-  /* Трейт находящийся правее вступает в силу первым */
+  /* Трейт находящийся правее вступает в силу первым
+  * порядок вызова (как при присваивании): PositiveFiltering.put() -> Incrementing.put() -> BasicIntQueue.put()
+  * */
   val stackable = new BasicIntQueue with Incrementing with PositiveFiltering
   stackable.put(-1)
   stackable.put(0)
   stackable.put(1)
   println(stackable.get()) // 1
   println(stackable.get()) // 2
-
 }
