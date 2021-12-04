@@ -12,9 +12,7 @@ object Companions extends App {
   println(MyCompanion("welcome")) // welcomeextraData
 
 }
-
-// Класс и объект-компаньон могут обращаться к приватным методам друг друга
-
+/** Класс и объект-компаньон могут обращаться к приватным методам друг друга */
 // Класс-компаньон
 class MyCompanion(val str: String) {
 
@@ -23,7 +21,7 @@ class MyCompanion(val str: String) {
   override def toString: String = str + extra
 }
 
-// Объект-одиночка
+/** Объект-компаньон (Является singleton-объектом, аналог статического класса в java) */
 object MyCompanion {
 
   def apply(base: String, extras: String): MyCompanion = {
