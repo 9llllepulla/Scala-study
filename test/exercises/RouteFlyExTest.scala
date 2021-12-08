@@ -2,8 +2,6 @@ package exercises
 
 import org.scalatest.flatspec.AnyFlatSpec
 
-import scala.Console.in
-
 class RouteFlyExTest extends AnyFlatSpec {
 
   behavior of "RouteFlyExTest"
