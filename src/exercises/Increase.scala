@@ -28,6 +28,6 @@ object Increase extends App {
 
     loop(num.toString.length)
   }
-  //println(createIncreaseResultString(increase(fArgs(0), fArgs(1), fArgs(2)))++" is the result")
 
+  println(createIncreaseResultString(increase(3, 5, 4))++" is the result") // 23 23 is the result
 }
