@@ -1,6 +1,13 @@
 package theory.caseclasses
 
-abstract class Expression
+/**
+ * У запечатанного класса не может быть других подклассов,
+ * кроме тех, что определены в этом же файле.
+ *
+ * Для case-классов обеспечивается улучшенная поддержка компилятором
+ *
+ */
+sealed abstract class Expression
 
 /**
  * В case classes добавляются по-умолчанию:
@@ -42,6 +49,14 @@ object Expr extends App {
     case BinaryOperation("*", e, Number(1)) => e // умножение на 1
     case _ => expression
   }
+
+  def describe(exp: Expression): String = exp match {
+    case Number(_) => "число"
+    case Var(_) => "переменная"
+  }
+
+  println(describe(Number(0)))
+  //println(describe(UnaryOperation("/", Var("y")))) // scala.MatchError
 
 }
 
