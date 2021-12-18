@@ -1,4 +1,4 @@
-package theory.constructions
+package theory.caseclasses
 
 /**
  * https://stepik.org/lesson/463106/step/1?unit=453731
@@ -20,15 +20,16 @@ package theory.constructions
 object CaseClasses extends App {
   val smallLemur: Lemur = Lemur("Alusha", 1)
   val bigLemur: Lemur = Lemur("Sergio", 2)
-  //println(smallLemur)
-  //println(bigLemur)
+  println(smallLemur)
+  println(bigLemur)
   val copyLemur = smallLemur.copy(id = 2)
-  //println(copyLemur)
+  println(copyLemur)
 
   val scalaCourse = Course("Scala", "Bob")
   val course = scalaCourse.copy("AdvancedScala")
   println(course)
 }
+
 case class Lemur(name: String, id: Int){
 
 }
