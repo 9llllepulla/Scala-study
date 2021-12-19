@@ -7,7 +7,7 @@ package theory.caseclasses
  * Для case-классов обеспечивается улучшенная поддержка компилятором
  *
  */
-sealed abstract class Expression
+sealed abstract class Express
 
 /**
  * В case classes добавляются по-умолчанию:
@@ -20,13 +20,13 @@ sealed abstract class Expression
  * </p><p>
  *    -- компилятор добавляет метод <i><b>copy</i></b> к классу для его изменения
  */
-case class Var(name: String) extends Expression
+case class Var(name: String) extends Express
 
-case class Number(number: Double) extends Expression
+case class Number(number: Double) extends Express
 
-case class UnaryOperation(operator: String, arg: Expression) extends Expression
+case class UnaryOperation(operator: String, arg: Express) extends Express
 
-case class BinaryOperation(operator: String, left: Expression, right: Expression) extends Expression
+case class BinaryOperation(operator: String, left: Express, right: Express) extends Express
 
 object Expr extends App {
 
@@ -43,14 +43,14 @@ object Expr extends App {
 
   /* Case classes поддерживают сопоставления с образцом */
 
-  def simplifyTop(expression: Expression): Expression = expression match {
+  def simplifyTop(expression: Express): Express = expression match {
     case UnaryOperation("-", UnaryOperation("-", e)) => e // двойное отрицание
     case BinaryOperation("+", e, Number(0)) => e // прибавление 0
     case BinaryOperation("*", e, Number(1)) => e // умножение на 1
     case _ => expression
   }
 
-  def describe(exp: Expression): String = exp match {
+  def describe(exp: Express): String = exp match {
     case Number(_) => "число"
     case Var(_) => "переменная"
   }
