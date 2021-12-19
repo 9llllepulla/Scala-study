@@ -8,7 +8,7 @@ object PatternMatching extends App {
 
   /* Подстановочные паттерны */
    val expression: Any = expression match {
-    case BinaryOperation(_, _, _) => println(s"$expression является бинарной операцией") //  -> (_)
+    case BiOpExample(_, _, _) => println(s"$expression является бинарной операцией") //  -> (_)
     case _ => println("Это что-то другое")
   }
 
@@ -30,7 +30,7 @@ object PatternMatching extends App {
 
   /** Паттерн - конструктор */
   val exp: Any = exp match {
-    case BinaryOperation("+", e, Number(0)) => println("глубокое соответствие") // проверка объекта и его содержимого
+    case BiOpExample("+", e, NumberExample(0)) => println("глубокое соответствие") // проверка объекта и его содержимого
     case _ =>
   }
 
@@ -75,14 +75,14 @@ object PatternMatching extends App {
 
   /** Привязка переменной */
   val exprs: Any = exprs match {
-    case UnaryOperation("abc", e @ UnaryOperation("abc", _)) => e // в случае совпадения переменной присваивается
+    case UnOpExample("abc", e @ UnOpExample("abc", _)) => e // в случае совпадения переменной присваивается
                                                                   // соответствующий объект
     case _ =>
   }
 
   /** Ограждение образца (pattern guard) */
-  def simplifyAdd(e: Express): Any = e match {
-    case BinaryOperation("+", x, y) if x == y => BinaryOperation("*", x, Number(2)) // if - ограничитель
+  def simplifyAdd(e: ExpressionExample): Any = e match {
+    case BiOpExample("+", x, y) if x == y => BiOpExample("*", x, NumberExample(2)) // if - ограничитель
     case _ =>
   }
 
@@ -92,8 +92,8 @@ object PatternMatching extends App {
   println(number) // 123
   println(string) // abc
 
-  val exampleExp = BinaryOperation("*", Number(5), Number(1))
-  val BinaryOperation(operator, left, right) = exampleExp
+  val exampleExp = BiOpExample("*", NumberExample(5), NumberExample(1))
+  val BiOpExample(operator, left, right) = exampleExp
   println(operator) // *
   println(left) // Number(5.0)
   println(right) // Number(1.0)
