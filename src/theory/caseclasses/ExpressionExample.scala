@@ -7,7 +7,7 @@ package theory.caseclasses
  * Для case-классов обеспечивается улучшенная поддержка компилятором
  *
  */
-sealed abstract class Express
+sealed abstract class ExpressionExample
 
 /**
  * В case classes добавляются по-умолчанию:
@@ -20,19 +20,19 @@ sealed abstract class Express
  * </p><p>
  *    -- компилятор добавляет метод <i><b>copy</i></b> к классу для его изменения
  */
-case class Var(name: String) extends Express
+case class VarExample(name: String) extends ExpressionExample
 
-case class Number(number: Double) extends Express
+case class NumberExample(number: Double) extends ExpressionExample
 
-case class UnaryOperation(operator: String, arg: Express) extends Express
+case class UnOpExample(operator: String, arg: ExpressionExample) extends ExpressionExample
 
-case class BinaryOperation(operator: String, left: Express, right: Express) extends Express
+case class BiOpExample(operator: String, left: ExpressionExample, right: ExpressionExample) extends ExpressionExample
 
-object Expr extends App {
+object Example extends App {
 
-  val newVar = Var("x") // new Var("x")
+  val newVar = VarExample("x") // new Var("x")
 
-  val op = BinaryOperation("+", Number(1), newVar) // фабричные методы создания объектов
+  val op = BiOpExample("+", NumberExample(1), newVar) // фабричные методы создания объектов
   println(op) // BinaryOperation(+,Number(1.0),Var(x))
 
   println(newVar.name) // x
@@ -43,19 +43,19 @@ object Expr extends App {
 
   /* Case classes поддерживают сопоставления с образцом */
 
-  def simplifyTop(expression: Express): Express = expression match {
-    case UnaryOperation("-", UnaryOperation("-", e)) => e // двойное отрицание
-    case BinaryOperation("+", e, Number(0)) => e // прибавление 0
-    case BinaryOperation("*", e, Number(1)) => e // умножение на 1
+  def simplifyTop(expression: ExpressionExample): ExpressionExample = expression match {
+    case UnOpExample("-", UnOpExample("-", e)) => e // двойное отрицание
+    case BiOpExample("+", e, NumberExample(0)) => e // прибавление 0
+    case BiOpExample("*", e, NumberExample(1)) => e // умножение на 1
     case _ => expression
   }
 
-  def describe(exp: Express): String = exp match {
-    case Number(_) => "число"
-    case Var(_) => "переменная"
+  def describe(exp: ExpressionExample): String = exp match {
+    case NumberExample(_) => "число"
+    case VarExample(_) => "переменная"
   }
 
-  println(describe(Number(0)))
+  println(describe(NumberExample(0)))
   //println(describe(UnaryOperation("/", Var("y")))) // scala.MatchError
 
 }
