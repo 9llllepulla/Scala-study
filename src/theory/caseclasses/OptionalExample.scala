@@ -2,10 +2,10 @@ package theory.caseclasses
 
 class OptionalExample {
 
-  val capitals = Map("France" -> "Paris", "Japan" -> "Tokyo", "Russia" -> "Moscow")
+  val countryCapitalsMap = Map("France" -> "Paris", "Japan" -> "Tokyo", "Russia" -> "Moscow")
 
-  private val capitalOfRussia: Option[String] = capitals get "Russia" // Option[String]
-  private val capitalOfNorthPole: Option[String] = capitals get "North Pole" // Option[String]
+  private val capitalOfRussia: Option[String] = countryCapitalsMap get "Russia" // Option[String]
+  private val capitalOfNorthPole: Option[String] = countryCapitalsMap get "North Pole" // Option[String]
 
 }
 
