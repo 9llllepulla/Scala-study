@@ -1,4 +1,6 @@
-package exercises.markup2d
+package exercises
+
+import exercises.markup2d.MarkupElement
 
 /**
  * Рисование спирали с помощью библиотеки MarkupElement

@@ -1,6 +1,15 @@
 package theory.caseclasses
 
-object OptionalClass extends App {
+class OptionalExample {
+
+  val capitals = Map("France" -> "Paris", "Japan" -> "Tokyo", "Russia" -> "Moscow")
+
+  private val capitalOfRussia: Option[String] = capitals get "Russia" // Option[String]
+  private val capitalOfNorthPole: Option[String] = capitals get "North Pole" // Option[String]
+
+}
+
+object OptionalExample extends App {
 
   // Option - способ защиты от NullPointerException
   def unsafeMethod: String = null;
@@ -19,13 +28,7 @@ object OptionalClass extends App {
   println(someVal.flatMap(x => Option(x * 2))) // Some(4)
   println(someVal.filter(x => x > 0)) // Some(2)
 
-  val capitals = Map("France" -> "Paris", "Japan" -> "Tokyo", "Russia" -> "Moscow")
-
-  val capitalOfRussia = capitals get "Russia" // Option[String]
-  println(capitalOfRussia) // Some(Moscow)
-
-  val capitalOfNorthPole = capitals get "North Pole" // Option[String]
-  println(capitalOfNorthPole) // None
-
+  println(new OptionalExample().capitalOfRussia) // Some(Moscow)
+  println(new OptionalExample().capitalOfNorthPole) // None
 
 }
