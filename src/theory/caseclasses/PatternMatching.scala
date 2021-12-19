@@ -81,8 +81,52 @@ object PatternMatching extends App {
   }
 
   /** Ограждение образца (pattern guard) */
-  def simplifyAdd(e: Expression): Any = e match {
+  def simplifyAdd(e: Express): Any = e match {
     case BinaryOperation("+", x, y) if x == y => BinaryOperation("*", x, Number(2)) // if - ограничитель
     case _ =>
   }
+
+  /** Паттерны в определениях переменных */
+  val myTuple = (123, "abc")
+  val (number, string) = myTuple
+  println(number) // 123
+  println(string) // abc
+
+  val exampleExp = BinaryOperation("*", Number(5), Number(1))
+  val BinaryOperation(operator, left, right) = exampleExp
+  println(operator) // *
+  println(left) // Number(5.0)
+  println(right) // Number(1.0)
+
+  /** Последовательности вариантов в качестве частично примененных функций */
+  val withDefault: Option[Int] => Int = {
+    case Some(x) => x
+    case None => 0
+  }
+  println(withDefault(Some(10))) // 10
+  println(withDefault(None)) // 0
+
+  val secondElement: List[Int] => Int = {
+    case x :: y :: _ => y
+  }
+  println(secondElement(List(5, 6, 7))) // 6
+
+  /* второй вариант определения частично примененной функции с возможностью проверки определения */
+  val secondElement2: PartialFunction[List[Int], Int] = {
+    case x :: y :: _ => y
+  }
+  println(secondElement2.isDefinedAt(List(3, 4, 6))) // true
+  println(secondElement2.isDefinedAt(List(1))) // false
+
+  /** Паттерны в выражениях for */
+  val capitals = new OptionalExample().countryCapitalsMap
+  for ((country, city) <- capitals)
+    println("Столицей " + country + " является " + city)
+  // Столицей France является Paris
+  // Столицей Japan является Tokyo
+  // Столицей Russia является Moscow
+
+  val fruits = List(Some("apple"), None, Some("orange")) // происходит отбор элементов соответствующих паттерну
+  for (Some(fruit) <- fruits) print(fruit + " ") // apple orange
+
 }
