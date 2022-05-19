@@ -100,7 +100,9 @@ object ListCollection extends App {
   println(List(1, 2, 3, 4, 5) filter(_ % 2 == 0)) // List(2, 4)
   println(List(1, 2, 3, 4, 5) partition(_ % 2 != 0)) // (List(1, 3, 5),List(2, 4))
   println(List(1, 2, 3, 4, 5) find(_ % 2 == 0)) // Some(2) - первый найденный элемент
-
+  println(List(1, 2, 3, -4, 5) takeWhile(_ > 0)) // List(1, 2, 3)
+  println(words dropWhile(_ startsWith "t")) // List(quick, brown, fox)
+  println(List(1, 2, 3, -4, 5) span(_ > 0)) // (List(1, 2, 3),List(-4, 5)) - возвращает пару из 2 списков
 
 
 }

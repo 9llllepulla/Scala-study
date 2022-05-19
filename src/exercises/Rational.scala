@@ -39,7 +39,7 @@ class Rational(n: Int, d: Int) {
   // в данном случае без this не обойтись
   def max(that: Rational): Rational = if (lessThan(that)) that else this
 
-  // приватный метод, вычисляющий наибольший общий делитель переданых значений
+  // приватный метод, вычисляющий наибольший общий делитель переданных значений
   @tailrec
   private def gcd(a: Int, b: Int): Int = {
     if (b == 0) a
