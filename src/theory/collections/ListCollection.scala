@@ -33,7 +33,7 @@ object ListCollection extends App {
   println(emptyList2) // List()
 
   /** Операции над списками */
-  val fruits = "apple":: "orange" :: "banana" :: Nil
+  val fruits = "apple" :: "orange" :: "banana" :: Nil
   println(fruits.isEmpty) // false
   println(fruits.head) // apple
   println(fruits.tail) // List(orange, banana)
@@ -83,6 +83,7 @@ object ListCollection extends App {
       else y :: insertS(x, ys)
     }
   }
+
   val unsorted = List(11, 33, 88, 93, 2, 17, 34, 76, 90, 14, 8, 1)
   val sortedList = insertSort(unsorted)
   println(sortedList) // List(1, 2, 8, 11, 14, 17, 33, 34, 76, 88, 90, 93)
@@ -97,12 +98,51 @@ object ListCollection extends App {
   println(sum) // 15
 
   /** filter, partition, find, takeWhile, dropWhile, span */
-  println(List(1, 2, 3, 4, 5) filter(_ % 2 == 0)) // List(2, 4)
-  println(List(1, 2, 3, 4, 5) partition(_ % 2 != 0)) // (List(1, 3, 5),List(2, 4))
-  println(List(1, 2, 3, 4, 5) find(_ % 2 == 0)) // Some(2) - первый найденный элемент
-  println(List(1, 2, 3, -4, 5) takeWhile(_ > 0)) // List(1, 2, 3)
-  println(words dropWhile(_ startsWith "t")) // List(quick, brown, fox)
-  println(List(1, 2, 3, -4, 5) span(_ > 0)) // (List(1, 2, 3),List(-4, 5)) - возвращает пару из 2 списков
+  println(List(1, 2, 3, 4, 5) filter (_ % 2 == 0)) // List(2, 4)
+  println(List(1, 2, 3, 4, 5) partition (_ % 2 != 0)) // (List(1, 3, 5),List(2, 4))
+  println(List(1, 2, 3, 4, 5) find (_ % 2 == 0)) // Some(2) - первый найденный элемент
+  println(List(1, 2, 3, -4, 5) takeWhile (_ > 0)) // List(1, 2, 3)
+  println(words dropWhile (_ startsWith "t")) // List(quick, brown, fox)
+  println(List(1, 2, 3, -4, 5) span (_ > 0)) // (List(1, 2, 3),List(-4, 5)) - возвращает пару из 2 списков
+
+  /**
+   * fold - свертка, объединяет элементы списка с помощью оператора (op):
+   *
+   * List(a, b, c).foldLeft(z)(op) => op(op(op(z, a), b), c)
+   * List(a, b, c).foldRight(z)(op) => op(a, op(b, op(c, z)))
+   *
+   * */
+  println(List(1, 2, 3, 4, 5).foldLeft("a")(_ + "b" + _)) // левая свертка - ab1b2b3b4b5
+  println(List(1, 2, 3, 4, 5).foldRight("a")(_ + "b" + _)) // правая свертка - 1b2b3b4b5ba
+
+  /** sort */
+  println(List(4, 7, 1, 2, 5) sortWith (_ < _)) // List(1, 2, 4, 5, 7)
+  println(fruits sortWith(_.length > _.length)) // List(orange, banana, apple)
+
+  /** range - создание списка в диапазоне */
+  println(List.range(1, 8)) // List(1, 2, 3, 4, 5, 6, 7)
+  println(List.range(1, 12, 3)) // List(1, 4, 7, 10)
+  println(List.range(12, 1, -3)) // List(12, 9, 6, 3)
+
+  /** fill - заполнение списка элементами */
+  println(List.fill(5)('s')) // List(s, s, s, s, s)
+  println(List.fill(5)("hello")) // List(hello, hello, hello, hello, hello)
+  println(List.fill(3, 2)("j")) // List(List(j, j), List(j, j), List(j, j)) - многомерные списки
+
+  /** tabulate - заполнение списка вычисляемыми элементами */
+  println(List.tabulate(7)(n => n + n)) // List(0, 2, 4, 6, 8, 10, 12)
+
+  /** конкатенация списков */
+  println(List.concat(List('a', 'b'), List('c', 'd'))) // List(a, b, c, d)
+
+  /** zip, lazyZip - создание списка пар из двух списков (лишний элемент отбрасывается) */
+  println((List(10, 20) zip List(3, 4, 5)).map {
+    case (x, y) => x * y
+  }) // List(30, 80)
+
+  println((List(10, 20) lazyZip  List(3, 4, 5)).map {
+    case (x, y) => x + y
+  }) // List(13, 24)
 
 
 }
