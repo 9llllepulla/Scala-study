@@ -2,6 +2,9 @@ package theory.collections
 
 import scala.collection.mutable
 
+/**
+ * Отображения (ассоциативные массивы)
+ */
 object MapCollections extends App {
 
   // Map

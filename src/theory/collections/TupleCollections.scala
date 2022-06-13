@@ -1,8 +1,9 @@
 package theory.collections
 
+/**
+ * Кортежи
+ */
 object TupleCollections extends App {
-
-  ////////////////// Tuple //////////////////////////////////////////////
 
   // Tuple содержит элементы разных типов
 
@@ -21,5 +22,22 @@ object TupleCollections extends App {
   val copy: (Int, String) = aTuple.copy(_1 = 33)
   println(copy) // (33,this a tuple)
   println(aTuple.swap) // замена местами (только для 2 элементов) (this a tuple,100)
+
+  /**
+   * хорошо подходят для возвращения из методов нескольких значений
+   */
+  def longestWord(words: Array[String]): (String, Int) = {
+    var word = words(0)
+    var index = 0
+    for (i <- 1 until words.length) {
+      if (words(i).length > words.length) {
+        word = words(i)
+        index = i
+      }
+    }
+    (word, index)
+  }
+  val tupleLongestWord = longestWord("The quick brown fox".split(" "))
+  println(tupleLongestWord) // (brown,2)
 
 }

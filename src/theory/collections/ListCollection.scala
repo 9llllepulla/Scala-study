@@ -1,5 +1,7 @@
 package theory.collections
 
+import scala.collection.mutable.ListBuffer
+
 /**
  * Списки являются неизменяемой структурой
  *
@@ -143,6 +145,18 @@ object ListCollection extends App {
   println((List(10, 20) lazyZip  List(3, 4, 5)).map {
     case (x, y) => x + y
   }) // List(13, 24)
+
+  /**
+   * ListBuffer - изменяемый объект помогает эффективно строить списки, когда в них нужно добавлять элементы в конец списка
+   */
+  val buffer = new ListBuffer[Int]
+  buffer += 1
+  buffer += 2
+  println(buffer) // добавление в конец ListBuffer(1, 2)
+  3 +=: buffer
+  println(buffer) // добавление в начало ListBuffer(3, 1, 2)
+  println(buffer.toList) // конвертация в список List(3, 1, 2)
+
 
 
 }
