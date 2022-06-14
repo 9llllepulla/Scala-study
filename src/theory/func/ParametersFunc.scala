@@ -16,6 +16,10 @@ object ParametersFunc extends App {
   val seq = Seq("What's ", "up ", "doc ?")
   echo(seq: _*) // What's up doc ?
 
+  def sumAllNums(nums: Int*): Int = nums.sum
+  println(sumAllNums(1, 3, 5)) // 9
+  println(sumAllNums(4, 6, 4, 6, 10)) // 30
+
   /**
    * Именованные аргументы
    */
