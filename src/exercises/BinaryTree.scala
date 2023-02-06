@@ -66,11 +66,6 @@ case object TreeEnd extends BinaryTree[Nothing] {
 
 /**
  * Узел дерева
- *
- * @param value
- * @param leftChild
- * @param rightChild
- * @tparam T
  */
 case class Node[+T](override val value: T, override val leftChild: BinaryTree[T], override val rightChild: BinaryTree[T]) extends BinaryTree[T] {
 
@@ -172,4 +167,13 @@ case class Node[+T](override val value: T, override val leftChild: BinaryTree[T]
     loop()
     allPaths.map(path => path.sum).contains(target)
   }
+
+  // другое решение
+  /*
+    def hasPath(tree: BinaryTree[Int], target: Int): Boolean = {
+      if (tree.isEmpty) target == 0
+      else hasPath(tree.leftChild, target - tree.value) || hasPath(tree.rightChild, target - tree.value)
+   }
+   */
 }
+
