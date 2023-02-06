@@ -75,7 +75,7 @@ object RouteFlyEx extends App {
     if(Try(network(pointA)).isSuccess & network(pointA).contains(pointB)) true
     else loop(network(pointA), Seq(pointA))
   }
-  /*  чужое краткое решение
+  /*  краткое решение
   def isConnected(network: Map[String, Set[String]], pointA: String, pointB: String): Boolean = {
     if (network(pointA).contains(pointB)) true
     else network(pointA).flatMap(x => network(x)).contains(pointB)
